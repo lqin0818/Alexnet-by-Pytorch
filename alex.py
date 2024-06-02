@@ -141,7 +141,9 @@ for epoch in range(epochs):
     print("Epoch {}/{}, Step {}/{}, Loss:{:.4f}".format(
                  epoch+1, epochs, i+1, train_step, loss.item())
          )
-
+# validation started #
+    
+    print ("validation started.....")
     with torch.no_grad():
         total = 0
         positive = 0
