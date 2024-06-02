@@ -158,6 +158,23 @@ for epoch in range(epochs):
 
         print("Accuracy of the network is {} %".format(100 * positive / total))
 
+    # test started #
+
+
+print ("test started.....")
+
+with torch.no_grad():
+    positive = 0
+    total = 0
+    for images, labels in testloader:
+        images, labels = images.to(device), labels.to(device)
+        output = net(images)
+        _, predicition = torch.max(output, 1)
+        total += labels.size(0)
+        positive += (predicition == labels).sum().item()
+
+    print("Accuracy of the model is {}%".format(100* positive/total))
+
 
 
 
