@@ -14,6 +14,7 @@ def traval_dataloader(datafile, batchsize, augment, seed, valratio= 0.1, shuffle
 
     if augment:
         train_transform = transforms.Compose([transforms.RandomHorizontalFlip(),
+                                              #transforms.CenterCrop(100)
                                            transforms.Resize(227),
                                            transforms.ToTensor(),
                                            normalize])
