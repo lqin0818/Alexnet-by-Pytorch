@@ -141,4 +141,20 @@ for epoch in range(epochs):
                  epoch+1, epochs, i+1, train_step, loss.item())
          )
 
+    with torch.no_grad():
+        total = 0
+        positive = 0
+        for images, labels in val_loader:
+            images, labels = images.to(device), labels.to(device)
+
+            predic = net(images)
+
+            total += labels.size(0)
+            _, prediction = torch.max(predic, 1)
+            positive += (prediction == labels).sum().item()
+
+        print("Accuracy of the network is {} %".format(100 * positive / total))
+
+
+
 
